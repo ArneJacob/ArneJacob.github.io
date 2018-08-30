@@ -1,6 +1,12 @@
 h1 {
 	color: #FF0000;
 	font-family: 'Open Sans', sans-serif;
+
+}
+h1:hover {
+	color: #184723;
+	font-family: 'Open Sans', sans-serif;
+	
 }
 p {
 	color: #F3E8A2;
