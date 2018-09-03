@@ -1,0 +1,32 @@
+h1 {
+	color: #FF0000;
+	font-family: 'Open Sans', sans-serif;
+  margin: 10px;
+
+}
+h1:hover {
+	color: #18FF23;
+	font-family: 'Open Sans', sans-serif;
+
+}
+p {
+	color: #F3E8A2;
+	font-size: 30px;
+	font-family: 'Open Sans', sans-serif;
+  margin: 5px;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: #2e353d;
+	margin-left: auto;
+	margin-right: auto;
+}
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  color: #FFFFFF;
+  font-size: 30px;
+}
+.BigButton{
+	background-color: inherit;
+	border: 0px;
+}

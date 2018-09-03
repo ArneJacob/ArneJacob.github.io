@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+	<title> Clickertest! </title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Mukta|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="stylesheet.css">
+	<meta charset="UTF-8">
+</head>
+<body>
+	<script>
+		var clicks = 0;
+		var clicksOnClick = 1;
+		/*document.getElementById("clicks").innerHTML = clicks;*/
+
+			function onButtonClick() {
+				clicks += clicksOnClick;
+			document.getElementById("clicks").innerHTML = clicks;
+	}
+
+/*function clickCounter() {
+		if(typeof(Storage) !== "undefined") {
+				if (localStorage.clickcount) {
+						localStorage.clickcount = Number(localStorage.clickcount)+1;
+				} else {
+						localStorage.clickcount = 1;
+				}
+				document.getElementById("result").innerHTML = "You have " + localStorage.clickcount + " click(s).";
+		} else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+		}*/
+
+		var costBaseDoubleclick1 = 25;
+		var costDoubleclick1 = 25;
+		var numberDoubleclick1 = 0;
+		function buyDoubleclick1() {
+			if (clicks >= costDoubleclick1) {
+				clicks -= costDoubleclick1
+				clicksOnClick += 1;
+				numberDoubleclick1 += 1;
+				costDoubleclick1 = Math.pow(1.25, numberDoubleclick1) * costBaseDoubleclick1;
+				Math.round(costDoubleclick1);
+				document.getElementById("costDoubleclick1Text").innerHTML = costDoubleclick1;
+	}
+}
+
+
+		var costBaseAutoclick1 = 25;
+		var costAutoclick1 = 25;
+		var numberAutoclick1 = 0;
+		var costAutoclick1Text = costAutoclick1;
+		function buyAutoclick1() {
+			if (clicks >= costAutoclick1) {
+				clicks -= costAutoclick1;{
+				numberAutoclick1 += 1;
+				costAutoclick1 = Math.pow(1.25, numberAutoclick1) * costBaseAutoclick1;
+				Math.round(costAutoclick1);
+				document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
+			}
+		}
+	}
+
+	var costBaseAutoclick2 = 250;
+	var costAutoclick2 = 250;
+	var numberAutoclick2 = 0;
+	var costAutoclick2Text = costAutoclick2;
+	function buyAutoclick2() {
+		if (clicks >= costAutoclick2) {
+			clicks -= costAutoclick2;{
+			numberAutoclick2 += 1;
+			costAutoclick2 = Math.pow(1.25, numberAutoclick2) * costBaseAutoclick2;
+			Math.round(costAutoclick2);
+			document.getElementById("costAutoclick2Text").innerHTML = costAutoclick2;
+		}
+	}
+}
+
+	var costBaseAutoclick3 = 1000;
+	var costAutoclick3 = 1000;
+	var numberAutoclick3 = 0;
+	var costAutoclick3Text = costAutoclick3;
+	function buyAutoclick3() {
+		if (clicks >= costAutoclick3) {
+			clicks -= costAutoclick3;{
+			numberAutoclick3 += 1;
+			costAutoclick3 = Math.pow(1.25, numberAutoclick3) * costBaseAutoclick3;
+			Math.round(costAutoclick3);
+			document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
+		}
+	}
+}
+setInterval(function autoclickers(){
+	clicks += numberAutoclick1;
+	clicks += 5 * numberAutoclick2;
+	clicks += 10 * numberAutoclick3;
+}, 1000)
+
+setInterval(function updateclicks(){
+	clicks = clicks;
+	document.getElementById("clicks").innerHTML = clicks;
+}, 100)
+
+</script>
+
+<h1>Welcome to the clicker test</h1>
+<p><button class="BigButton" onClick="onButtonClick()"><img src="cookie2.png"/></button></p>
+<h3>Clicks: <span id="clicks">0</span></h3>
+<p>Click the button to obtain clicks.</p>
+<p>Upgrades:<p>
+<p><button onclick="buyDoubleclick1()">Buy Doubleclick!</button> Cost: <span id="costDoubleclick1Text">25</span>&nbsp;&nbsp;&nbsp;- Clicks per click +1</p>
+<p><button class="fuckmeg" onclick="buyAutoclick1()" type="button">Buy Level 1 Autoclicker!</button></p>Cost: <span id="costAutoclick1Text">25</span>&nbsp;&nbsp;&nbsp;- Clicks per second +1</p>
+<p><button onclick="buyAutoclick2()" type="button">Buy Level 2 Autoclicker!</button></p>Cost: <span id="costAutoclick2Text">250</span>&nbsp;&nbsp;&nbsp;- Clicks per second +5</p>
+<p><button onclick="buyAutoclick3()" type="button">Buy Level 3 Autoclicker!</button></p>Cost: <span id="costAutoclick3Text">1000</span>&nbsp;&nbsp;&nbsp;- Clicks per second +10</p>
+
+</body>
+</html>
