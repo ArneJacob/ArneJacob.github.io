@@ -16,9 +16,12 @@
 	<meta charset="UTF-8">
 </head>
 <body>
+	<section class="bothSections">
+	<div class="clicksSection">
 	<script>
 		var clicks = 0;
 		var clicksOnClick = 1;
+		var clicksPerSecond = 0
 		/*document.getElementById("clicks").innerHTML = clicks;*/
 
 			function onButtonClick() {
@@ -53,6 +56,21 @@
 	}
 }
 
+		var costBaseClickdoubler = 10;
+		var costClickdoubler = 10;
+		var numberClickdoubler = 0;
+			function buyClickdoubler() {
+				if (clicks >= costClickdoubler) {
+					clicks -= costClickdoubler
+					numberClickdoubler += 1;
+					clicksOnClick *= 2;
+					costClickdoubler = Math.pow(2, numberClickdoubler) * costBaseClickdoubler;
+					costClickdoubler = Math.round(costClickdoubler);
+					document.getElementById("costClickdoublerText").innerHTML = costClickdoubler;
+					document.getElementById("numberClickdoublerText").innerHTML = numberClickdoubler;
+				}
+			}
+
 
 		var costBaseAutoclick1 = 25;
 		var costAutoclick1 = 25;
@@ -62,9 +80,11 @@
 			if (clicks >= costAutoclick1) {
 				clicks -= costAutoclick1;{
 				numberAutoclick1 += 1;
+				clicksPerSecond += 1;
 				costAutoclick1 = Math.pow(1.25, numberAutoclick1) * costBaseAutoclick1;
 				costAutoclick1 = Math.round(costAutoclick1);
 				document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
+				document.getElementById("numberAutoclick1Text").innerHTML = numberAutoclick1;
 			}
 		}
 	}
@@ -77,9 +97,11 @@
 		if (clicks >= costAutoclick2) {
 			clicks -= costAutoclick2;{
 			numberAutoclick2 += 1;
+			clicksPerSecond += 5;
 			costAutoclick2 = Math.pow(1.25, numberAutoclick2) * costBaseAutoclick2;
 			costAutoclick2 = Math.round(costAutoclick2);
 			document.getElementById("costAutoclick2Text").innerHTML = costAutoclick2;
+			document.getElementById("numberAutoclick2Text").innerHTML = numberAutoclick2;
 		}
 	}
 }
@@ -92,20 +114,20 @@
 		if (clicks >= costAutoclick3) {
 			clicks -= costAutoclick3;{
 			numberAutoclick3 += 1;
+			clicksPerSecond += 10;
 			costAutoclick3 = Math.pow(1.25, numberAutoclick3) * costBaseAutoclick3;
 			costAutoclick3 = Math.round(costAutoclick3);
 			document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
+			document.getElementById("numberAutoclick3Text").innerHTML = numberAutoclick3;
 		}
 	}
 }
 var click_acc = 0
 
 setInterval(function autoclickers(){
-  click_acc += (numberAutoclick1)/100;
-    click_acc += (5 * numberAutoclick2)/100;
-    click_acc += (10 * numberAutoclick3)/100;
+	click_acc += getRealClicksPerSecond()/100;
   if (click_acc >= 1){
-    a = Math.floor(click_acc)
+    let a = Math.floor(click_acc)
     click_acc -= a
     clicks += a
   }
@@ -116,26 +138,34 @@ setInterval(function updateclicks(){
     document.getElementById("clicks").innerHTML = clicks;
 }, 100)
 
-var clicksPerSecond
+function getRealClicksPerSecond(){
+  let a = clicksPerSecond;
+  if(numberClickdoubler >= 1){
+    a*=2*numberClickdoubler;
+  }
+  return a;
+}
 setInterval(function updateClicksPerSecond() {
-	clicksPerSecond = (numberAutoclick1 + 5 * numberAutoclick2 + 10 * numberAutoclick3)
-	document.getElementById("clicksPerSecond").innerHTML = clicksPerSecond;
+	document.getElementById("clicksPerSecond").innerHTML = getRealClicksPerSecond();
 })
 setInterval(function titleUpdater() {
 	document.title = "You have " + clicks + " clicks!"
 }, 200)
 </script>
 
-<h1>Welcome to the clicker test</h1>
+<h1>Welcome to the Arne Jacob Clicker Game</h1>
 <p><button class="BigButton" onClick="onButtonClick()"><img src="cookie2.png"/></button></p>
 <h3>Clicks: <span id="clicks">0</span></h3>
 <h3>Clicks per second: <span id="clicksPerSecond">0</span></h3>
-<p>Click the button to obtain clicks.</p>
-<p>Upgrades:<p>
-<p><button onclick="buyExtraclick1()">Buy Extraclick!</button><br> Cost: <span id="costExtraclick1Text">25</span>&nbsp;&nbsp;- Gives one additional click every time you click. (Current: <span id="clicksOnClick">1</span>)</p>
-<p2><button class="fuckmeg" onclick="buyAutoclick1()" type="button">Buy Level 1 Autoclicker!</button></p>Cost: <span id="costAutoclick1Text">25</span>&nbsp;- Clicks per second +1</p2><br>
-<p3><button onclick="buyAutoclick2()" type="button">Buy Level 2 Autoclicker!</button></p>Cost: <span id="costAutoclick2Text">250</span>&nbsp;- Clicks per second +5</p3><br>
-<p4><button onclick="buyAutoclick3()" type="button">Buy Level 3 Autoclicker!</button></p>Cost: <span id="costAutoclick3Text">1000</span>&nbsp;- Clicks per second +10</p4><br>
-
+<p>Click the button to obtain clicks.</p></div>
+<div class="upgradesSection"> <p>Upgrades:</p>
+<p><button class="despacito" onclick="buyExtraclick1()">Buy Extraclick!</button><br> Cost: <span id="costExtraclick1Text">25</span>&nbsp;&nbsp;- Gives one additional click every time you click. (Current clicks per click: <span id="clicksOnClick">1</span>)</p>
+<p><button class="despacito2" onclick="buyClickdoubler()">Buy Clickdoubler!</button><br> Cost: <span id="costClickdoublerText">10000</span>&nbsp;&nbsp;- Doubles all clicks. (Current amount of Doublers: <span id="numberClickdoublerText">0</span>)</p>
+</div>
+<div class="autoClickers"> <p> Automatic Clicking Action: </p>
+<p2><button class="despacito3" onclick="buyAutoclick1()" type="button">Buy Level 1 Autoclicker!</button></p>Cost: <span id="costAutoclick1Text">25</span>&nbsp;- Clicks per second +1 (Current amount of clickers: <span id="numberAutoclick1Text">0</span>)</p2><br>
+<p3><button class="despacito4" onclick="buyAutoclick2()" type="button">Buy Level 2 Autoclicker!</button></p>Cost: <span id="costAutoclick2Text">250</span>&nbsp;- Clicks per second +5 (Current amount of clickers: <span id="numberAutoclick2Text">0</span>)</p3><br>
+<p4><button class="despacito5" onclick="buyAutoclick3()" type="button">Buy Level 3 Autoclicker!</button></p>Cost: <span id="costAutoclick3Text">1000</span>&nbsp;- Clicks per second +10 (Current amount of clickers: <span id="numberAutoclick3Text">0</span>)</p4><br></div>
+</section>
 </body>
 </html>
