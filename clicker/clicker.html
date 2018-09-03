@@ -4,6 +4,15 @@
 	<title> Clickertest! </title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Mukta|Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="stylesheet.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="manifest" href="icons/site.webmanifest">
+	<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="icons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#00a300">
+	<meta name="msapplication-config" content="icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
 	<meta charset="UTF-8">
 </head>
 <body>
@@ -29,17 +38,18 @@
 				document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
 		}*/
 
-		var costBaseDoubleclick1 = 25;
-		var costDoubleclick1 = 25;
-		var numberDoubleclick1 = 0;
-		function buyDoubleclick1() {
-			if (clicks >= costDoubleclick1) {
-				clicks -= costDoubleclick1
+		var costBaseExtraclick1 = 25;
+		var costExtraclick1 = 25;
+		var numberExtraclick1 = 0;
+		function buyExtraclick1() {
+			if (clicks >= costExtraclick1) {
+				clicks -= costExtraclick1
 				clicksOnClick += 1;
-				numberDoubleclick1 += 1;
-				costDoubleclick1 = Math.pow(1.25, numberDoubleclick1) * costBaseDoubleclick1;
-				costDoubleclick1 = Math.round(costDoubleclick1);
-				document.getElementById("costDoubleclick1Text").innerHTML = costDoubleclick1;
+				numberExtraclick1 += 1;
+				costExtraclick1 = Math.pow(1.25, numberExtraclick1) * costBaseExtraclick1;
+				costExtraclick1 = Math.round(costExtraclick1);
+				document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
+				document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
 	}
 }
 
@@ -106,14 +116,23 @@ setInterval(function updateclicks(){
     document.getElementById("clicks").innerHTML = clicks;
 }, 100)
 
+var clicksPerSecond
+setInterval(function updateClicksPerSecond() {
+	clicksPerSecond = (numberAutoclick1 + 5 * numberAutoclick2 + 10 * numberAutoclick3)
+	document.getElementById("clicksPerSecond").innerHTML = clicksPerSecond;
+})
+setInterval(function titleUpdater() {
+	document.title = "You have " + clicks + " clicks!"
+}, 200)
 </script>
 
 <h1>Welcome to the clicker test</h1>
 <p><button class="BigButton" onClick="onButtonClick()"><img src="cookie2.png"/></button></p>
 <h3>Clicks: <span id="clicks">0</span></h3>
+<h3>Clicks per second: <span id="clicksPerSecond">0</span></h3>
 <p>Click the button to obtain clicks.</p>
 <p>Upgrades:<p>
-<p><button onclick="buyDoubleclick1()">Buy Doubleclick!</button><br> Cost: <span id="costDoubleclick1Text">25</span>&nbsp;&nbsp;- Clicks per click +1</p>
+<p><button onclick="buyExtraclick1()">Buy Extraclick!</button><br> Cost: <span id="costExtraclick1Text">25</span>&nbsp;&nbsp;- Gives one additional click every time you click. (Current: <span id="clicksOnClick">1</span>)</p>
 <p2><button class="fuckmeg" onclick="buyAutoclick1()" type="button">Buy Level 1 Autoclicker!</button></p>Cost: <span id="costAutoclick1Text">25</span>&nbsp;- Clicks per second +1</p2><br>
 <p3><button onclick="buyAutoclick2()" type="button">Buy Level 2 Autoclicker!</button></p>Cost: <span id="costAutoclick2Text">250</span>&nbsp;- Clicks per second +5</p3><br>
 <p4><button onclick="buyAutoclick3()" type="button">Buy Level 3 Autoclicker!</button></p>Cost: <span id="costAutoclick3Text">1000</span>&nbsp;- Clicks per second +10</p4><br>
