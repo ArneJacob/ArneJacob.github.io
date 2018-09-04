@@ -1,4 +1,4 @@
-
+    var username
 		var clicks = 0;
 		var clicksOnClick = 1;
 		var clicksPerSecond = 0
@@ -59,8 +59,8 @@
 	}
 }
 
-		var costBaseClickdoubler = 1;
-		var costClickdoubler = 1;
+		var costBaseClickdoubler = 10000;
+		var costClickdoubler = 10000;
 		var numberClickdoubler = 0;
 			function buyClickdoubler() {
 				if (clicks >= costClickdoubler) {
@@ -156,7 +156,7 @@ setInterval(function titleUpdater() {
 	document.title = "You have " + clicks + " clicks!"
 }, 200)
 
-setInterval(function bronzeTrophyCheck(){
+/*setInterval(function bronzeTrophyCheck(){
 	if(clicks >= 100000){
 		document.getElementsByClassName("bronzeTrophy").style.opacity = "1.0";
 	}
@@ -172,7 +172,7 @@ setInterval(function goldTrophyCheck(){
 	if(clicks >= 100000000){
 		document.getElementsByClassName("goldTrophy").style.opacity = "1.0";
 	}
-}, 1000)
+}, 1000)*/
 
 
 function loadGame(){
@@ -188,6 +188,7 @@ function loadGame(){
   }
   if(gamedata != null){
     clicks = gamedata.clicks || 0;
+    clicksPerSecond = gamedata.clicksPerSecond || 0;
     costExtraclick1 = gamedata.costExtraclick1 || 0;
     costClickdoubler = gamedata.costClickdoubler || 0;
     costAutoclick1 = gamedata.costAutoclick1 || 0;
@@ -200,23 +201,24 @@ function loadGame(){
     numberAutoclick3 = gamedata.numberAutoclick3 || 0;
     username = gamedata.username;
     /* other data to load */
+    document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
+    document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
+    document.getElementById("costClickdoublerText").innerHTML = costClickdoubler;
+    document.getElementById("numberClickdoublerText").innerHTML = numberClickdoubler;
+    document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
+    document.getElementById("numberAutoclick1Text").innerHTML = numberAutoclick1;
+    document.getElementById("costAutoclick2Text").innerHTML = costAutoclick2;
+    document.getElementById("numberAutoclick2Text").innerHTML = numberAutoclick2;
+    document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
+    document.getElementById("numberAutoclick3Text").innerHTML = numberAutoclick3;
+    document.getElementById("usernameHTML").innerHTML = username;
   }
 }
-
-document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
-document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
-document.getElementById("costClickdoublerText").innerHTML = costClickdoubler;
-document.getElementById("numberClickdoublerText").innerHTML = numberClickdoubler;
-document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
-document.getElementById("numberAutoclick1Text").innerHTML = numberAutoclick1;
-document.getElementById("costAutoclick2Text").innerHTML = costAutoclick2;
-document.getElementById("numberAutoclick2Text").innerHTML = numberAutoclick2;
-document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
-document.getElementById("numberAutoclick3Text").innerHTML = numberAutoclick3;
 
 function saveGame(){
   let gamedata = {
     clicks: clicks,
+    clicksPerSecond: clicksPerSecond,
     costExtraclick1: costExtraclick1,
     costClickdoubler: costClickdoubler,
     costAutoclick1: costAutoclick1,
@@ -232,6 +234,7 @@ function saveGame(){
   }
   let serialized = JSON.stringify(gamedata);
   localStorage.setItem("gamedata", serialized);
+  alert("The game has been saved. You can now safely close the window.")
 }
 
 
