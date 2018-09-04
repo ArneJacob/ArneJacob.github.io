@@ -1,6 +1,6 @@
 .bothSections {
 	width: 90%;
-	height: auto;
+	height: 95%;
 	margin:auto;
 	padding: 10px;
 
@@ -210,10 +210,5 @@ p4 {
 		position:relative;
 		top:1px;
 	}
-.nameSection {
-	vertical-align: bottom;
-	height: 1px;
-	color: #F3E8A2;
-	font-size: 20px;
-	font-family: 'Open Sans', sans-serif;
+
 }
