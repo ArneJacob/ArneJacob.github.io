@@ -14,8 +14,45 @@
 	<meta name="msapplication-config" content="icons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 	<meta charset="UTF-8">
+	<script>
+	function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+	function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+	function checkCookie() {
+			var username = getCookie("username");
+			if (username != "") {
+					alert("Welcome again " + username);
+			} else {
+					username = prompt("Please enter your name:", "");
+					if (username != "" && username != null) {
+							setCookie("username", username, 365);
+							document.getElementById("username").innerHTML = username;
+					}
+			}
+	}
+	</script>
 </head>
-<body>
+
+<body onload="checkCookie()">
 	<section class="bothSections">
 	<div class="clicksSection">
 	<script>
@@ -151,13 +188,16 @@ setInterval(function updateClicksPerSecond() {
 setInterval(function titleUpdater() {
 	document.title = "You have " + clicks + " clicks!"
 }, 200)
+
 </script>
 
 <h1>Welcome to the Arne Jacob Clicker Game</h1>
 <p><button class="BigButton" onClick="onButtonClick()"><img src="cookie2.png"/></button></p>
 <h3>Clicks: <span id="clicks">0</span></h3>
 <h3>Clicks per second: <span id="clicksPerSecond">0</span></h3>
-<p>Click the button to obtain clicks.</p></div>
+<p>Click the button to obtain clicks.</p><br>
+
+<div class="nameSection"> <p> Welcome user: <span id="username"></span></p></div></div>
 <div class="upgradesSection"> <p>Upgrades:</p>
 <p><button class="despacito" onclick="buyExtraclick1()">Buy Extraclick!</button><br> Cost: <span id="costExtraclick1Text">25</span>&nbsp;&nbsp;- Gives one additional click every time you click. (Current clicks per click: <span id="clicksOnClick">1</span>)</p>
 <p><button class="despacito2" onclick="buyClickdoubler()">Buy Clickdoubler!</button><br> Cost: <span id="costClickdoublerText">10000</span>&nbsp;&nbsp;- Doubles all clicks. (Current amount of Doublers: <span id="numberClickdoublerText">0</span>)</p>
