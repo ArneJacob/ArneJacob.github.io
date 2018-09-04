@@ -173,3 +173,74 @@ setInterval(function goldTrophyCheck(){
 		document.getElementsByClassName("goldTrophy").style.opacity = "1.0";
 	}
 }, 1000)
+
+
+function loadGame(){
+  let unserialized = localStorage.getItem("gamedata");
+  let gamedata;
+  if (unserialized != null){
+    try{
+      gamedata = JSON.parse(unserialized)
+    }catch(err){
+      console.error(err);
+      alert("Could not load saved gamedata");
+    }
+  }
+  if(gamedata != null){
+    clicks = gamedata.clicks || 0;
+    costExtraclick1 = gamedata.costExtraclick1 || 0;
+    costClickdoubler = gamedata.costClickdoubler || 0;
+    costAutoclick1 = gamedata.costAutoclick1 || 0;
+    costAutoclick2 = gamedata.costAutoclick2 || 0;
+    costAutoclick3 = gamedata.costAutoclick3 || 0;
+    numberExtraclick1 = gamedata.numberExtraclick1 || 0;
+    numberClickdoubler = gamedata.numberClickdoubler || 0;
+    numberAutoclick1 = gamedata.numberAutoclick1 || 0;
+    numberAutoclick2 = gamedata.numberAutoclick2 || 0;
+    numberAutoclick3 = gamedata.numberAutoclick3 || 0;
+    username = gamedata.username;
+    /* other data to load */
+  }
+}
+
+document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
+document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
+document.getElementById("costClickdoublerText").innerHTML = costClickdoubler;
+document.getElementById("numberClickdoublerText").innerHTML = numberClickdoubler;
+document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
+document.getElementById("numberAutoclick1Text").innerHTML = numberAutoclick1;
+document.getElementById("costAutoclick2Text").innerHTML = costAutoclick2;
+document.getElementById("numberAutoclick2Text").innerHTML = numberAutoclick2;
+document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
+document.getElementById("numberAutoclick3Text").innerHTML = numberAutoclick3;
+
+function saveGame(){
+  let gamedata = {
+    clicks: clicks,
+    costExtraclick1: costExtraclick1,
+    costClickdoubler: costClickdoubler,
+    costAutoclick1: costAutoclick1,
+    costAutoclick2: costAutoclick2,
+    costAutoclick3: costAutoclick3,
+    numberExtraclick1: numberExtraclick1,
+    numberClickdoubler: numberClickdoubler,
+    numberAutoclick1: numberAutoclick1,
+    numberAutoclick2: numberAutoclick2,
+    numberAutoclick3: numberAutoclick3,
+    username: username,
+    /*other things that should be saved*/
+  }
+  let serialized = JSON.stringify(gamedata);
+  localStorage.setItem("gamedata", serialized);
+}
+
+
+
+window.addEventListener("load", function(){
+  loadGame()
+  if (username == null){
+    username = prompt("Please enter your name:", "");
+  } else {
+    alert("Welcome again " + username)
+  }
+})
