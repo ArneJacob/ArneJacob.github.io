@@ -85,7 +85,7 @@
 				clicks -= costAutoclick1;{
 				numberAutoclick1 += 1;
 				clicksPerSecond += 1;
-				costAutoclick1 = Math.pow(1.25, numberAutoclick1) * costBaseAutoclick1;
+				costAutoclick1 = Math.pow(1.15, numberAutoclick1) * costBaseAutoclick1;
 				costAutoclick1 = Math.round(costAutoclick1);
 				document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
 				document.getElementById("numberAutoclick1Text").innerHTML = numberAutoclick1;
@@ -102,7 +102,7 @@
 			clicks -= costAutoclick2;{
 			numberAutoclick2 += 1;
 			clicksPerSecond += 5;
-			costAutoclick2 = Math.pow(1.25, numberAutoclick2) * costBaseAutoclick2;
+			costAutoclick2 = Math.pow(1.15, numberAutoclick2) * costBaseAutoclick2;
 			costAutoclick2 = Math.round(costAutoclick2);
 			document.getElementById("costAutoclick2Text").innerHTML = costAutoclick2;
 			document.getElementById("numberAutoclick2Text").innerHTML = numberAutoclick2;
@@ -119,7 +119,7 @@
 			clicks -= costAutoclick3;{
 			numberAutoclick3 += 1;
 			clicksPerSecond += 10;
-			costAutoclick3 = Math.pow(1.25, numberAutoclick3) * costBaseAutoclick3;
+			costAutoclick3 = Math.pow(1.15, numberAutoclick3) * costBaseAutoclick3;
 			costAutoclick3 = Math.round(costAutoclick3);
 			document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
 			document.getElementById("numberAutoclick3Text").innerHTML = numberAutoclick3;
@@ -136,7 +136,7 @@
       clicks -= costAutoclick4;{
       numberAutoclick4 += 1;
       clicksPerSecond += 25;
-      costAutoclick4 = Math.pow(1.25, numberAutoclick4) * costBaseAutoclick4;
+      costAutoclick4 = Math.pow(1.15, numberAutoclick4) * costBaseAutoclick4;
       costAutoclick4 = Math.round(costAutoclick4);
       document.getElementById("costAutoclick4Text").innerHTML = costAutoclick4;
       document.getElementById("numberAutoclick4Text").innerHTML = numberAutoclick4;
@@ -153,7 +153,7 @@
       clicks -= costAutoclick5;{
       numberAutoclick5 += 1;
       clicksPerSecond += 50;
-      costAutoclick5 = Math.pow(1.25, numberAutoclick5) * costBaseAutoclick5;
+      costAutoclick5 = Math.pow(1.15, numberAutoclick5) * costBaseAutoclick5;
       costAutoclick5 = Math.round(costAutoclick5);
       document.getElementById("costAutoclick5Text").innerHTML = costAutoclick5;
       document.getElementById("numberAutoclick5Text").innerHTML = numberAutoclick5;
@@ -170,7 +170,7 @@
       clicks -= costAutoclick6;{
       numberAutoclick6 += 1;
       clicksPerSecond += 125;
-      costAutoclick6 = Math.pow(1.25, numberAutoclick6) * costBaseAutoclick6;
+      costAutoclick6 = Math.pow(1.15, numberAutoclick6) * costBaseAutoclick6;
       costAutoclick6 = Math.round(costAutoclick6);
       document.getElementById("costAutoclick6Text").innerHTML = costAutoclick6;
       document.getElementById("numberAutoclick6Text").innerHTML = numberAutoclick6;
