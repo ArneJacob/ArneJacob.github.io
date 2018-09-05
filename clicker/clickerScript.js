@@ -126,6 +126,58 @@
 		}
 	}
 }
+
+  var costBaseAutoclick4 = 5000;
+  var costAutoclick4 = 5000;
+  var numberAutoclick4 = 0;
+  var costAutoclick4Text = costAutoclick4;
+  function buyAutoclick4() {
+    if (clicks >= costAutoclick4) {
+      clicks -= costAutoclick4;{
+      numberAutoclick4 += 1;
+      clicksPerSecond += 25;
+      costAutoclick4 = Math.pow(1.25, numberAutoclick4) * costBaseAutoclick4;
+      costAutoclick4 = Math.round(costAutoclick4);
+      document.getElementById("costAutoclick4Text").innerHTML = costAutoclick4;
+      document.getElementById("numberAutoclick4Text").innerHTML = numberAutoclick4;
+    }
+  }
+}
+
+  var costBaseAutoclick5 = 20000;
+  var costAutoclick5 = 20000;
+  var numberAutoclick5 = 0;
+  var costAutoclick5Text = costAutoclick5;
+  function buyAutoclick5() {
+    if (clicks >= costAutoclick5) {
+      clicks -= costAutoclick5;{
+      numberAutoclick5 += 1;
+      clicksPerSecond += 50;
+      costAutoclick5 = Math.pow(1.25, numberAutoclick5) * costBaseAutoclick5;
+      costAutoclick5 = Math.round(costAutoclick5);
+      document.getElementById("costAutoclick5Text").innerHTML = costAutoclick5;
+      document.getElementById("numberAutoclick5Text").innerHTML = numberAutoclick5;
+    }
+  }
+}
+
+  var costBaseAutoclick6 = 50000;
+  var costAutoclick6 = 50000;
+  var numberAutoclick6 = 0;
+  var costAutoclick6Text = costAutoclick6;
+  function buyAutoclick6() {
+    if (clicks >= costAutoclick6) {
+      clicks -= costAutoclick6;{
+      numberAutoclick6 += 1;
+      clicksPerSecond += 125;
+      costAutoclick6 = Math.pow(1.25, numberAutoclick6) * costBaseAutoclick6;
+      costAutoclick6 = Math.round(costAutoclick6);
+      document.getElementById("costAutoclick6Text").innerHTML = costAutoclick6;
+      document.getElementById("numberAutoclick6Text").innerHTML = numberAutoclick6;
+    }
+  }
+}
+
 var click_acc = 0
 
 setInterval(function autoclickers(){
@@ -140,7 +192,7 @@ setInterval(function autoclickers(){
 setInterval(function updateclicks(){
     clicks = clicks;
     document.getElementById("clicks").innerHTML = clicks;
-}, 100)
+}, 10)
 
 function getRealClicksPerSecond(){
   let a = clicksPerSecond;
@@ -154,7 +206,7 @@ setInterval(function updateClicksPerSecond() {
 })
 setInterval(function titleUpdater() {
 	document.title = "You have " + clicks + " clicks!"
-}, 200)
+}, 20)
 
 /*setInterval(function bronzeTrophyCheck(){
 	if(clicks >= 100000){
@@ -194,11 +246,17 @@ function loadGame(){
     costAutoclick1 = gamedata.costAutoclick1 || 0;
     costAutoclick2 = gamedata.costAutoclick2 || 0;
     costAutoclick3 = gamedata.costAutoclick3 || 0;
+    costAutoclick4 = gamedata.costAutoclick4 || 0;
+    costAutoclick5 = gamedata.costAutoclick5 || 0;
+    costAutoclick6 = gamedata.costAutoclick6 || 0;
     numberExtraclick1 = gamedata.numberExtraclick1 || 0;
     numberClickdoubler = gamedata.numberClickdoubler || 0;
     numberAutoclick1 = gamedata.numberAutoclick1 || 0;
     numberAutoclick2 = gamedata.numberAutoclick2 || 0;
     numberAutoclick3 = gamedata.numberAutoclick3 || 0;
+    numberAutoclick4 = gamedata.numberAutoclick4 || 0;
+    numberAutoclick5 = gamedata.numberAutoclick5 || 0;
+    numberAutoclick6 = gamedata.numberAutoclick6 || 0;
     username = gamedata.username;
     /* other data to load */
     document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
@@ -211,6 +269,12 @@ function loadGame(){
     document.getElementById("numberAutoclick2Text").innerHTML = numberAutoclick2;
     document.getElementById("costAutoclick3Text").innerHTML = costAutoclick3;
     document.getElementById("numberAutoclick3Text").innerHTML = numberAutoclick3;
+    document.getElementById("costAutoclick4Text").innerHTML = costAutoclick4;
+    document.getElementById("numberAutoclick4Text").innerHTML = numberAutoclick4;
+    document.getElementById("costAutoclick5Text").innerHTML = costAutoclick5;
+    document.getElementById("numberAutoclick5Text").innerHTML = numberAutoclick5;
+    document.getElementById("costAutoclick6Text").innerHTML = costAutoclick6;
+    document.getElementById("numberAutoclick6Text").innerHTML = numberAutoclick6;
     document.getElementById("usernameHTML").innerHTML = username;
   }
 }
@@ -224,11 +288,17 @@ function saveGame(){
     costAutoclick1: costAutoclick1,
     costAutoclick2: costAutoclick2,
     costAutoclick3: costAutoclick3,
+    costAutoclick4: costAutoclick4,
+    costAutoclick5: costAutoclick5,
+    costAutoclick6: costAutoclick6,
     numberExtraclick1: numberExtraclick1,
     numberClickdoubler: numberClickdoubler,
     numberAutoclick1: numberAutoclick1,
     numberAutoclick2: numberAutoclick2,
     numberAutoclick3: numberAutoclick3,
+    numberAutoclick4: numberAutoclick4,
+    numberAutoclick5: numberAutoclick5,
+    numberAutoclick6: numberAutoclick6,
     username: username,
     /*other things that should be saved*/
   }
