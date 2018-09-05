@@ -240,6 +240,7 @@ function loadGame(){
   }
   if(gamedata != null){
     clicks = gamedata.clicks || 0;
+    clicksOnClick = gamedata.clicksOnClick || 0;
     clicksPerSecond = gamedata.clicksPerSecond || 0;
     costExtraclick1 = gamedata.costExtraclick1 || 0;
     costClickdoubler = gamedata.costClickdoubler || 0;
@@ -261,6 +262,7 @@ function loadGame(){
     /* other data to load */
     document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
     document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
+    document.getElementById("clicksPerSecond").innerHTML = clicksPerSecond;
     document.getElementById("costClickdoublerText").innerHTML = costClickdoubler;
     document.getElementById("numberClickdoublerText").innerHTML = numberClickdoubler;
     document.getElementById("costAutoclick1Text").innerHTML = costAutoclick1;
@@ -282,6 +284,7 @@ function loadGame(){
 function saveGame(){
   let gamedata = {
     clicks: clicks,
+    clicksOnClick: clicksOnClick,
     clicksPerSecond: clicksPerSecond,
     costExtraclick1: costExtraclick1,
     costClickdoubler: costClickdoubler,
