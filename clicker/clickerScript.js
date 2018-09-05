@@ -244,6 +244,6 @@ window.addEventListener("load", function(){
   if (username == null){
     username = prompt("Please enter your name:", "");
   } else {
-    alert("Welcome again " + username)
+    alert("Welcome back, " + username)
   }
 })
