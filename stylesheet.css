@@ -27,11 +27,11 @@ p2 {
 	font-size: 30px;
 	font-family: 'Montserrat', sans-serif;
 }
-ol {
+ul {
 	margin: 10px;
 	padding: 10px;
 }
-ol a {
+ul a {
 	display: block;
 	width: 250px;
 	height: 25px;
@@ -45,7 +45,7 @@ ol a {
 	text-align: center;
 	font-size: 20px;
 }
-ol a:hover {
+ul a:hover {
 	background-color: #e7f1cc;
 }
 p3 {
