@@ -1,17 +1,17 @@
 .wholePage {
-	width: 90%;
+	width: 98%;
 	margin: auto;
 	padding: 10px;
 }
 
 .leftSection {
-	width: 45%;
+	width: 49%;
 	float:left;
 	margin: auto;
 }
 
 .rightSection {
-	width: 45%;
+	width: 49%;
 	float: left;
 	margin: auto;
 }

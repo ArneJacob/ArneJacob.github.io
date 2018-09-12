@@ -35,14 +35,6 @@
 					document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
 					document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
 				}
-				else if (numberClickdoubler == 1) {
-					clicksOnClick += 2;
-					numberExtraclick1 += 1;
-					costExtraclick1 = Math.pow(1.25, numberExtraclick1) * costBaseExtraclick1;
-					costExtraclick1 = Math.round(costExtraclick1);
-					document.getElementById("costExtraclick1Text").innerHTML = costExtraclick1;
-					document.getElementById("clicksOnClick").innerHTML = clicksOnClick;
-				}
 				else {
 					clicksOnClick += 1;
 					numberExtraclick1 += 1;
