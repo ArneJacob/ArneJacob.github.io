@@ -302,7 +302,34 @@ function saveGame(){
   alert("The game has been saved. You can now safely close the window.")
 }
 
-
+setInterval(function Autosave() {
+  let gamedata = {
+  clicks: clicks,
+  clicksOnClick: clicksOnClick,
+  clicksPerSecond: clicksPerSecond,
+  costExtraclick1: costExtraclick1,
+  costClickdoubler: costClickdoubler,
+  costAutoclick1: costAutoclick1,
+  costAutoclick2: costAutoclick2,
+  costAutoclick3: costAutoclick3,
+  costAutoclick4: costAutoclick4,
+  costAutoclick5: costAutoclick5,
+  costAutoclick6: costAutoclick6,
+  numberExtraclick1: numberExtraclick1,
+  numberClickdoubler: numberClickdoubler,
+  numberAutoclick1: numberAutoclick1,
+  numberAutoclick2: numberAutoclick2,
+  numberAutoclick3: numberAutoclick3,
+  numberAutoclick4: numberAutoclick4,
+  numberAutoclick5: numberAutoclick5,
+  numberAutoclick6: numberAutoclick6,
+  username: username,
+  }
+  let serialized = JSON.stringify(gamedata);
+  localStorage.setItem("gamedata", serialized);
+  saveTime = moment();
+  document.getElementById("autoUpdate").innerHTML = saveTime.fromNow();
+}, 180000);
 
 window.addEventListener("load", function(){
   loadGame()
