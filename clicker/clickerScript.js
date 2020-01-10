@@ -303,6 +303,8 @@ function saveGame(){
 }
 
 setInterval(function Autosave() {
+  saveTime = moment();
+  document.getElementById("autoUpdate").innerHTML = saveTime.fromNow();
   let gamedata = {
   clicks: clicks,
   clicksOnClick: clicksOnClick,
@@ -327,9 +329,7 @@ setInterval(function Autosave() {
   }
   let serialized = JSON.stringify(gamedata);
   localStorage.setItem("gamedata", serialized);
-  saveTime = moment();
-  document.getElementById("autoUpdate").innerHTML = saveTime.fromNow();
-}, 180000);
+}, 60000);
 
 window.addEventListener("load", function(){
   loadGame()

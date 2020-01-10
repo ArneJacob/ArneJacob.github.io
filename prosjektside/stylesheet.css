@@ -1,0 +1,89 @@
+body {
+  background-image: url(https://i.imgur.com/Ojrz2Av.gif);
+  height: 100%;
+}
+p {
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  font-family: 'Source Code Pro', monospace;
+}
+h1 {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.innpakning {
+  float: left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-image: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(32,196,0,0.5))
+}
+
+.heading {
+  flex-basis: 100%;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+
+}
+.meny {
+  flex-basis: 100%;
+  height: 5%;
+  padding: 5px;
+  margin: 5px;
+
+
+}
+.hovedfelt {
+  flex-basis: 80%;
+  height: auto;
+  order: 3;
+  padding: 1px;
+  margin: 5px;
+  /*margin-right: 1px;*/
+
+}
+.sidefelt {
+  border-style: solid;
+  border-radius: 2px;
+  border-color: white;
+  flex: 1;
+  height: auto;
+  order: 5;
+  padding: 1px;
+  margin: 5px;
+
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+ul li {
+	display: inline;
+
+}
+ul a {
+	width: 10%;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 2px;
+	color: #333333;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: #70B83C;
+
+}
+ul a:hover {
+	background-color: #236916;
+	width: 12%;
+	height: 15px;
+}
