@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stein, saks, CPU!</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <a href="./index.html">
+      <img class="homebtn" src="./media/home.png" alt="">
+    </a>
+    <div class="playarea">
+      <div class="textField1" id="TextField1">
+        <p>VELG DIN SKJEBNE!</p>
+      </div>
+      <div class="images1" id="Images1" style="display: block;">
+        <img src="./media/rock_p1.png" alt="" onclick="p1rock(); p2rand(); getElementById('TextField1').style.display = 'none'; getElementById('resultConfirm').style.display = 'block'; getElementById('Images1').style.display = 'none';">
+        <img src="./media/paper_p1.png" alt="" onclick="p1paper(); p2rand(); getElementById('TextField1').style.display = 'none'; getElementById('resultConfirm').style.display = 'block'; getElementById('Images1').style.display = 'none';">
+        <img src="./media/scissors_p1.png" alt="" onclick="p1scissors(); p2rand(); getElementById('TextField1').style.display = 'none'; getElementById('resultConfirm').style.display = 'block'; getElementById('Images1').style.display = 'none';">
+      </div>
+      <div class="resultConfirm" id="resultConfirm" style="display: none;">
+        <img src="./media/check-mark.png" alt="" onclick="calculateResult(); getElementById('Results').style.display = 'block'; getElementById('ResultTextDiv').style.display = 'block'; getElementById('resultConfirm').style.display = 'none';">
+      </div>
+      <div class="resultText" id="ResultTextDiv" style="display: none;">
+        <p id="ResultTextInner"></p>
+      </div>
+      <div class="results" id="Results" style="display: none;">
+        <img id="P1Result" src="./media/p1.png" alt="">
+        <img src="./media/blank.png" alt="">
+        <img id="P2Result" src="./media/p2.png" alt="">
+      </div>
+    </div>
+    <script type="text/javascript">
+      var p1result = null
+      var p2result = null
+      var result = null
+      function p1rock() {
+        p1result = 0
+        p1resultT = "rock"; console.log(p1result, p1resultT);
+        document.getElementById('P1Result').src = "./media/" + p1resultT + "_p1.png";
+      }
+      function p1paper() {
+        p1result = 1
+        p1resultT = "paper"; console.log(p1result, p1resultT);
+        document.getElementById('P1Result').src = "./media/" + p1resultT + "_p1.png";
+      }
+      function p1scissors() {
+        p1result = 2
+        p1resultT = "scissors"; console.log(p1result, p1resultT);
+        document.getElementById('P1Result').src = "./media/" + p1resultT + "_p1.png";
+      }
+
+      function p2rock() {
+        p2result = 0
+        p2resultT = "rock"; console.log(p2result, p2resultT);
+        document.getElementById('P2Result').src = "./media/" + p2resultT + "_p2.png";
+      }
+      function p2paper() {
+        p2result = 1
+        p2resultT = "paper"; console.log(p2result, p2resultT);
+        document.getElementById('P2Result').src = "./media/" + p2resultT + "_p2.png";
+      }
+      function p2scissors() {
+        p2result = 2
+        p2resultT = "scissors"; console.log(p2result, p2resultT);
+        document.getElementById('P2Result').src = "./media/" + p2resultT + "_p2.png";
+      }
+
+      function p2rand() {
+        p2rand = Math.random() * 3;
+        p2rand = Math.floor(p2rand);
+        console.log("p2 = " + p2rand);
+        if (p2rand === 0) {
+          p2rock();
+        } else if (p2rand === 1) {
+          p2paper();
+        } else {
+          p2scissors();
+        }
+      }
+      function calculateResult() {
+        console.log(`calc result, p1:${p1result} p2:${p2result}`)
+        if (p1result === 0) { // p1 rock
+          if (p2result === 0) {
+            result = 0;
+          } else if (p2result === 1) {
+            result = 2;
+          } else {
+            result = 1;
+          }
+        } else if (p1result === 1) { // p1 paper
+          if (p2result === 0) {
+            result = 1;
+          } else if (p2result === 1) {
+            result = 0;
+            console.log('shsha dada', result);
+          } else {
+            result = 2;
+          }
+        } else { // p1 scissors
+          if (p2result === 0) {
+            result = 2;
+          } else if (p2result === 1) {
+            result = 1;
+          } else {
+            result = 0;
+          }
+        }
+
+      console.log('p1result', p1result);
+      console.log('p2result', p2result);
+      console.log('result:', result)
+
+        resultUpdate(result)
+      }
+
+      function resultUpdate(result){
+        console.log(result);
+        if (result === 0) {
+          document.getElementById('ResultTextInner').innerHTML = "Kampen ble uavgjort."
+        } else if (result === 1) {
+          document.getElementById('ResultTextInner').innerHTML = "Du vant!"
+        } else {
+          document.getElementById('ResultTextInner').innerHTML = "Datamaskinen vant!"
+        }
+      }
+    </script>
+  </body>
+</html>

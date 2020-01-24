@@ -1,0 +1,76 @@
+body {
+  background-color: #101010;
+  font-family: "Comic Sans MS", sans-serif;
+  -moz-user-select: none;
+}
+html, body {
+  margin: 0;
+}
+
+img {
+  width: 256px;
+  height: 256px;
+}
+
+img.homebtn {
+  left: 2px;
+  top: 2px;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+}
+
+img.homebtn:hover {
+  width: 33px;
+  height: 33px;
+}
+
+img:hover {
+  width: 260px;
+  height: 260px;
+}
+
+.playarea {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.textField {
+  margin-left:auto;
+  margin-right:auto;
+}
+.icons{
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+}
+.hiddenImg {
+  width: 64px;
+  height: 64px;
+  display: none;
+}
+.human {
+  padding: 10px;
+}
+.bot {
+  padding: 10px;
+}
+
+h1 {
+  color: white;
+}
+
+p {
+  color: white;
+  font-size: 64px;
+}
+
+h3 {
+  color: white;
+}
+
+button {
+  all: unset;
+}
